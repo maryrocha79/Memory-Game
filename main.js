@@ -26,6 +26,12 @@ var cardsArrayConcat=cardsArray.concat(cardsArray);
 var gameGrid = cardsArrayConcat.sort(function () {
     return 0.5 - Math.random();
   });
+
+  // function shuffle(){
+  //   cardsArrayConcat.sort(function () {
+  //     return 0.5 - Math.random();
+  //   });
+  // }
  
   
   var firstGuess = '';
@@ -85,9 +91,8 @@ var gameGrid = cardsArrayConcat.sort(function () {
   
    grid.addEventListener('click', function (event) {
     var clicked = event.target;
-    total+=1;
-    totalClicks.innerText= total;
-
+    
+   
     if (clicked.nodeName === 'SECTION' || clicked === previousTarget || clicked.parentNode.classList.contains('selected') || clicked.parentNode.classList.contains('match')) {
       return;
     }
@@ -103,6 +108,14 @@ var gameGrid = cardsArrayConcat.sort(function () {
        
         clicked.parentNode.classList.add('selected');
       }
+
+      if (clicked.parentNode.classList.contains('selected')){
+        total+=1;
+        }
+
+        totalClicks.innerText= total;
+
+
   
       if (firstGuess && secondGuess) {
         if (firstGuess === secondGuess) {
@@ -114,6 +127,7 @@ var gameGrid = cardsArrayConcat.sort(function () {
     }
   }); 
 
+
   document.getElementById('btn').addEventListener('click',function(){
     total=0;
     totalClicks.innerText= total;
@@ -121,6 +135,7 @@ var gameGrid = cardsArrayConcat.sort(function () {
     removeClass.forEach(function(card){
       card.classList.remove('match');
     });
+   
   });
   
 
