@@ -1,0 +1,96 @@
+
+body {
+    margin: 20px 0;
+    background: rgba(152, 182, 245, 0.993);
+    font-family: fantasy;
+  }
+  
+  #btn {
+    text-align: center;
+    background:  white;
+    margin: 0 auto;
+    border-top: 0.5in;
+    margin-bottom: 0.5in;
+    border-radius: 15%;
+    display: block;
+    /* height:50px;
+    width:100px; */
+    font-size: 1em;
+    color: rgb(10, 45, 238);
+  } 
+
+  .grid {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  
+  .card {
+    position: relative;
+    transition: all .4s linear;
+    transform-style: preserve-3d;
+    margin: 5px;
+  }
+  
+  .card,
+  .back,
+  .front {
+    height: 150px;
+    width: 150px;
+    border: 0.5in;
+    border-radius: 15%;
+  }
+  
+  .back,
+  .front {
+    position: absolute;
+    backface-visibility: hidden;
+  }
+  
+  .front {
+    z-index: 2;
+    background: url('https://png.pngtree.com/element_origin_min_pic/16/08/27/1257c11d1dc209d.jpg') no-repeat center center / contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  
+  .back {
+    transform: rotateY(180deg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  
+  .selected {
+    transform: rotateY(180deg);
+  }
+  
+  .match{ 
+    transform: rotateY(180deg);
+    border: 4px solid rgb(10, 45, 238);
+  }
+
+  #totalClicks{
+    font-family: fantasy;
+    margin: 0 auto;
+    text-align: center;
+    border-color: black;
+    background-color:rgba(152, 182, 245, 0.993);
+    border-radius: 25%;
+    display: block;
+    height:130px;
+    width:130px;
+    font-size: 4em;
+    color: rgb(10, 45, 238);
+    }
+
+    h1 {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 3em;
+    font-family: fantasy;
+    color: rgb(10, 45, 238);
+    }
