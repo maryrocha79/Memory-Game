@@ -85,10 +85,11 @@ body {
     color: rgb(10, 45, 238);
     }
 
-    h1 {
+    h1,#message {
     margin: 0 auto;
     text-align: center;
     font-size: 3em;
     font-family: fantasy;
     color: rgb(10, 45, 238);
     }
+    

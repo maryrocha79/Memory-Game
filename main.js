@@ -26,14 +26,8 @@ var cardsArrayConcat=cardsArray.concat(cardsArray);
 var gameGrid = cardsArrayConcat.sort(function () {
     return 0.5 - Math.random();
   });
-
-  // function shuffle(){
-  //   cardsArrayConcat.sort(function () {
-  //     return 0.5 - Math.random();
-  //   });
-  // }
  
-  
+
   var firstGuess = '';
   var secondGuess = '';
   var count = 0;
@@ -42,7 +36,8 @@ var gameGrid = cardsArrayConcat.sort(function () {
 
   var total=0;
   var totalClicks=document.getElementById("totalClicks")
- 
+  var message='';
+  
   
 
   var game = document.getElementById('game');
@@ -50,7 +45,7 @@ var gameGrid = cardsArrayConcat.sort(function () {
   grid.setAttribute('class', 'grid');
   game.appendChild(grid);
   
-  gameGrid.forEach(function (item) {
+ gameGrid.forEach(function (item) {
     var name = item.name,
         img = item.img;
 
@@ -92,7 +87,6 @@ var gameGrid = cardsArrayConcat.sort(function () {
    grid.addEventListener('click', function (event) {
     var clicked = event.target;
     
-   
     if (clicked.nodeName === 'SECTION' || clicked === previousTarget || clicked.parentNode.classList.contains('selected') || clicked.parentNode.classList.contains('match')) {
       return;
     }
@@ -101,11 +95,11 @@ var gameGrid = cardsArrayConcat.sort(function () {
       count++;
       if (count === 1) {
         firstGuess = clicked.parentNode.dataset.name;
-        
+        console.log(firstGuess);
         clicked.parentNode.classList.add('selected');
       } else {
         secondGuess = clicked.parentNode.dataset.name;
-       
+        console.log(secondGuess);
         clicked.parentNode.classList.add('selected');
       }
 
@@ -115,29 +109,43 @@ var gameGrid = cardsArrayConcat.sort(function () {
 
         totalClicks.innerText= total;
 
-
-  
       if (firstGuess && secondGuess) {
         if (firstGuess === secondGuess) {
           setTimeout(match, delay);
+
+          if((document.querySelectorAll('.match').length)===8){
+          console.log(document.querySelectorAll('.match').length); 
+          message='You are a Winner! You made '+total+' moves.';
+          document.getElementById('message').innerText = message;
+          }
         }
         setTimeout(clearGuesses, delay);
       }
       previousTarget = clicked;
-    }
-  }); 
 
+    }
+    
+  }); 
+  
 
   document.getElementById('btn').addEventListener('click',function(){
-    total=0;
+    
+    total=null;
     totalClicks.innerText= total;
+    message='';
+    document.getElementById('message').innerText = message;
+
     var removeClass= document.querySelectorAll('.card');
     removeClass.forEach(function(card){
       card.classList.remove('match');
-    });
-   
-  });
-  
+      card.classList.remove('selected');
+    });  
+
+    
+   gameGrid.sort(() => 0.5 - Math.random());
+   console.log(gameGrid);
+    
+  }); 
 
   
   
